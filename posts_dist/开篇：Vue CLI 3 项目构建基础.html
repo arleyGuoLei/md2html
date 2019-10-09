@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>开篇：Vue CLI 3 项目构建基础</title>
+    <style>
+      @font-face {
+        font-family: octicons-link;
+        src: url(data:font/woff;charset=utf-8;base64,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)
+          format("woff");
+      }
+
+      .markdown-body .octicon {
+        display: inline-block;
+        fill: currentColor;
+        vertical-align: text-bottom;
+      }
+
+      .markdown-body .anchor {
+        float: left;
+        line-height: 1;
+        margin-left: -20px;
+        padding-right: 4px;
+      }
+
+      .markdown-body .anchor:focus {
+        outline: none;
+      }
+
+      .markdown-body h1 .octicon-link,
+      .markdown-body h2 .octicon-link,
+      .markdown-body h3 .octicon-link,
+      .markdown-body h4 .octicon-link,
+      .markdown-body h5 .octicon-link,
+      .markdown-body h6 .octicon-link {
+        color: #1b1f23;
+        vertical-align: middle;
+        visibility: hidden;
+      }
+
+      .markdown-body h1:hover .anchor,
+      .markdown-body h2:hover .anchor,
+      .markdown-body h3:hover .anchor,
+      .markdown-body h4:hover .anchor,
+      .markdown-body h5:hover .anchor,
+      .markdown-body h6:hover .anchor {
+        text-decoration: none;
+      }
+
+      .markdown-body h1:hover .anchor .octicon-link,
+      .markdown-body h2:hover .anchor .octicon-link,
+      .markdown-body h3:hover .anchor .octicon-link,
+      .markdown-body h4:hover .anchor .octicon-link,
+      .markdown-body h5:hover .anchor .octicon-link,
+      .markdown-body h6:hover .anchor .octicon-link {
+        visibility: visible;
+      }
+
+      .markdown-body {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        color: #24292e;
+        line-height: 1.5;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+          Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        font-size: 16px;
+        line-height: 1.5;
+        word-wrap: break-word;
+      }
+
+      .markdown-body .pl-c {
+        color: #6a737d;
+      }
+
+      .markdown-body .pl-c1,
+      .markdown-body .pl-s .pl-v {
+        color: #005cc5;
+      }
+
+      .markdown-body .pl-e,
+      .markdown-body .pl-en {
+        color: #6f42c1;
+      }
+
+      .markdown-body .pl-s .pl-s1,
+      .markdown-body .pl-smi {
+        color: #24292e;
+      }
+
+      .markdown-body .pl-ent {
+        color: #22863a;
+      }
+
+      .markdown-body .pl-k {
+        color: #d73a49;
+      }
+
+      .markdown-body .pl-pds,
+      .markdown-body .pl-s,
+      .markdown-body .pl-s .pl-pse .pl-s1,
+      .markdown-body .pl-sr,
+      .markdown-body .pl-sr .pl-cce,
+      .markdown-body .pl-sr .pl-sra,
+      .markdown-body .pl-sr .pl-sre {
+        color: #032f62;
+      }
+
+      .markdown-body .pl-smw,
+      .markdown-body .pl-v {
+        color: #e36209;
+      }
+
+      .markdown-body .pl-bu {
+        color: #b31d28;
+      }
+
+      .markdown-body .pl-ii {
+        background-color: #b31d28;
+        color: #fafbfc;
+      }
+
+      .markdown-body .pl-c2 {
+        background-color: #d73a49;
+        color: #fafbfc;
+      }
+
+      .markdown-body .pl-c2:before {
+        content: "^M";
+      }
+
+      .markdown-body .pl-sr .pl-cce {
+        color: #22863a;
+        font-weight: 700;
+      }
+
+      .markdown-body .pl-ml {
+        color: #735c0f;
+      }
+
+      .markdown-body .pl-mh,
+      .markdown-body .pl-mh .pl-en,
+      .markdown-body .pl-ms {
+        color: #005cc5;
+        font-weight: 700;
+      }
+
+      .markdown-body .pl-mi {
+        color: #24292e;
+        font-style: italic;
+      }
+
+      .markdown-body .pl-mb {
+        color: #24292e;
+        font-weight: 700;
+      }
+
+      .markdown-body .pl-md {
+        background-color: #ffeef0;
+        color: #b31d28;
+      }
+
+      .markdown-body .pl-mi1 {
+        background-color: #f0fff4;
+        color: #22863a;
+      }
+
+      .markdown-body .pl-mc {
+        background-color: #ffebda;
+        color: #e36209;
+      }
+
+      .markdown-body .pl-mi2 {
+        background-color: #005cc5;
+        color: #f6f8fa;
+      }
+
+      .markdown-body .pl-mdr {
+        color: #6f42c1;
+        font-weight: 700;
+      }
+
+      .markdown-body .pl-ba {
+        color: #586069;
+      }
+
+      .markdown-body .pl-sg {
+        color: #959da5;
+      }
+
+      .markdown-body .pl-corl {
+        color: #032f62;
+        text-decoration: underline;
+      }
+
+      .markdown-body details {
+        display: block;
+      }
+
+      .markdown-body summary {
+        display: list-item;
+      }
+
+      .markdown-body a {
+        background-color: transparent;
+      }
+
+      .markdown-body a:active,
+      .markdown-body a:hover {
+        outline-width: 0;
+      }
+
+      .markdown-body strong {
+        font-weight: inherit;
+        font-weight: bolder;
+      }
+
+      .markdown-body h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+      }
+
+      .markdown-body img {
+        border-style: none;
+      }
+
+      .markdown-body code,
+      .markdown-body kbd,
+      .markdown-body pre {
+        font-family: monospace, monospace;
+        font-size: 1em;
+      }
+
+      .markdown-body hr {
+        box-sizing: content-box;
+        height: 0;
+        overflow: visible;
+      }
+
+      .markdown-body input {
+        font: inherit;
+        margin: 0;
+      }
+
+      .markdown-body input {
+        overflow: visible;
+      }
+
+      .markdown-body [type="checkbox"] {
+        box-sizing: border-box;
+        padding: 0;
+      }
+
+      .markdown-body * {
+        box-sizing: border-box;
+      }
+
+      .markdown-body input {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+      }
+
+      .markdown-body a {
+        color: #0366d6;
+        text-decoration: none;
+      }
+
+      .markdown-body a:hover {
+        text-decoration: underline;
+      }
+
+      .markdown-body strong {
+        font-weight: 600;
+      }
+
+      .markdown-body hr {
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid #dfe2e5;
+        height: 0;
+        margin: 15px 0;
+        overflow: hidden;
+      }
+
+      .markdown-body hr:before {
+        content: "";
+        display: table;
+      }
+
+      .markdown-body hr:after {
+        clear: both;
+        content: "";
+        display: table;
+      }
+
+      .markdown-body table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      .markdown-body td,
+      .markdown-body th {
+        padding: 0;
+      }
+
+      .markdown-body details summary {
+        cursor: pointer;
+      }
+
+      .markdown-body h1,
+      .markdown-body h2,
+      .markdown-body h3,
+      .markdown-body h4,
+      .markdown-body h5,
+      .markdown-body h6 {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+
+      .markdown-body h1 {
+        font-size: 32px;
+      }
+
+      .markdown-body h1,
+      .markdown-body h2 {
+        font-weight: 600;
+      }
+
+      .markdown-body h2 {
+        font-size: 24px;
+      }
+
+      .markdown-body h3 {
+        font-size: 20px;
+      }
+
+      .markdown-body h3,
+      .markdown-body h4 {
+        font-weight: 600;
+      }
+
+      .markdown-body h4 {
+        font-size: 16px;
+      }
+
+      .markdown-body h5 {
+        font-size: 14px;
+      }
+
+      .markdown-body h5,
+      .markdown-body h6 {
+        font-weight: 600;
+      }
+
+      .markdown-body h6 {
+        font-size: 12px;
+      }
+
+      .markdown-body p {
+        margin-bottom: 10px;
+        margin-top: 0;
+      }
+
+      .markdown-body blockquote {
+        margin: 0;
+      }
+
+      .markdown-body ol,
+      .markdown-body ul {
+        margin-bottom: 0;
+        margin-top: 0;
+        padding-left: 0;
+      }
+
+      .markdown-body ol ol,
+      .markdown-body ul ol {
+        list-style-type: lower-roman;
+      }
+
+      .markdown-body ol ol ol,
+      .markdown-body ol ul ol,
+      .markdown-body ul ol ol,
+      .markdown-body ul ul ol {
+        list-style-type: lower-alpha;
+      }
+
+      .markdown-body dd {
+        margin-left: 0;
+      }
+
+      .markdown-body code,
+      .markdown-body pre {
+        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+          monospace;
+        font-size: 12px;
+      }
+
+      .markdown-body pre {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+
+      .markdown-body input::-webkit-inner-spin-button,
+      .markdown-body input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+      }
+
+      .markdown-body .border {
+        border: 1px solid #e1e4e8 !important;
+      }
+
+      .markdown-body .border-0 {
+        border: 0 !important;
+      }
+
+      .markdown-body .border-bottom {
+        border-bottom: 1px solid #e1e4e8 !important;
+      }
+
+      .markdown-body .rounded-1 {
+        border-radius: 3px !important;
+      }
+
+      .markdown-body .bg-white {
+        background-color: #fff !important;
+      }
+
+      .markdown-body .bg-gray-light {
+        background-color: #fafbfc !important;
+      }
+
+      .markdown-body .text-gray-light {
+        color: #6a737d !important;
+      }
+
+      .markdown-body .mb-0 {
+        margin-bottom: 0 !important;
+      }
+
+      .markdown-body .my-2 {
+        margin-bottom: 8px !important;
+        margin-top: 8px !important;
+      }
+
+      .markdown-body .pl-0 {
+        padding-left: 0 !important;
+      }
+
+      .markdown-body .py-0 {
+        padding-bottom: 0 !important;
+        padding-top: 0 !important;
+      }
+
+      .markdown-body .pl-1 {
+        padding-left: 4px !important;
+      }
+
+      .markdown-body .pl-2 {
+        padding-left: 8px !important;
+      }
+
+      .markdown-body .py-2 {
+        padding-bottom: 8px !important;
+        padding-top: 8px !important;
+      }
+
+      .markdown-body .pl-3,
+      .markdown-body .px-3 {
+        padding-left: 16px !important;
+      }
+
+      .markdown-body .px-3 {
+        padding-right: 16px !important;
+      }
+
+      .markdown-body .pl-4 {
+        padding-left: 24px !important;
+      }
+
+      .markdown-body .pl-5 {
+        padding-left: 32px !important;
+      }
+
+      .markdown-body .pl-6 {
+        padding-left: 40px !important;
+      }
+
+      .markdown-body .f6 {
+        font-size: 12px !important;
+      }
+
+      .markdown-body .lh-condensed {
+        line-height: 1.25 !important;
+      }
+
+      .markdown-body .text-bold {
+        font-weight: 600 !important;
+      }
+
+      .markdown-body:before {
+        content: "";
+        display: table;
+      }
+
+      .markdown-body:after {
+        clear: both;
+        content: "";
+        display: table;
+      }
+
+      .markdown-body > :first-child {
+        margin-top: 0 !important;
+      }
+
+      .markdown-body > :last-child {
+        margin-bottom: 0 !important;
+      }
+
+      .markdown-body a:not([href]) {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .markdown-body blockquote,
+      .markdown-body dl,
+      .markdown-body ol,
+      .markdown-body p,
+      .markdown-body pre,
+      .markdown-body table,
+      .markdown-body ul {
+        margin-bottom: 16px;
+        margin-top: 0;
+      }
+
+      .markdown-body hr {
+        background-color: #e1e4e8;
+        border: 0;
+        height: 0.25em;
+        margin: 24px 0;
+        padding: 0;
+      }
+
+      .markdown-body blockquote {
+        border-left: 0.25em solid #dfe2e5;
+        color: #6a737d;
+        padding: 0 1em;
+      }
+
+      .markdown-body blockquote > :first-child {
+        margin-top: 0;
+      }
+
+      .markdown-body blockquote > :last-child {
+        margin-bottom: 0;
+      }
+
+      .markdown-body kbd {
+        background-color: #fafbfc;
+        border: 1px solid #c6cbd1;
+        border-bottom-color: #959da5;
+        border-radius: 3px;
+        box-shadow: inset 0 -1px 0 #959da5;
+        color: #444d56;
+        display: inline-block;
+        font-size: 11px;
+        line-height: 10px;
+        padding: 3px 5px;
+        vertical-align: middle;
+      }
+
+      .markdown-body h1,
+      .markdown-body h2,
+      .markdown-body h3,
+      .markdown-body h4,
+      .markdown-body h5,
+      .markdown-body h6 {
+        font-weight: 600;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        margin-top: 24px;
+      }
+
+      .markdown-body h1 {
+        font-size: 2em;
+      }
+
+      .markdown-body h1,
+      .markdown-body h2 {
+        border-bottom: 1px solid #eaecef;
+        padding-bottom: 0.3em;
+      }
+
+      .markdown-body h2 {
+        font-size: 1.5em;
+      }
+
+      .markdown-body h3 {
+        font-size: 1.25em;
+      }
+
+      .markdown-body h4 {
+        font-size: 1em;
+      }
+
+      .markdown-body h5 {
+        font-size: 0.875em;
+      }
+
+      .markdown-body h6 {
+        color: #6a737d;
+        font-size: 0.85em;
+      }
+
+      .markdown-body ol,
+      .markdown-body ul {
+        padding-left: 2em;
+      }
+
+      .markdown-body ol ol,
+      .markdown-body ol ul,
+      .markdown-body ul ol,
+      .markdown-body ul ul {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+
+      .markdown-body li {
+        word-wrap: break-all;
+      }
+
+      .markdown-body li > p {
+        margin-top: 16px;
+      }
+
+      .markdown-body li + li {
+        margin-top: 0.25em;
+      }
+
+      .markdown-body dl {
+        padding: 0;
+      }
+
+      .markdown-body dl dt {
+        font-size: 1em;
+        font-style: italic;
+        font-weight: 600;
+        margin-top: 16px;
+        padding: 0;
+      }
+
+      .markdown-body dl dd {
+        margin-bottom: 16px;
+        padding: 0 16px;
+      }
+
+      .markdown-body table {
+        display: block;
+        overflow: auto;
+        width: 100%;
+      }
+
+      .markdown-body table th {
+        font-weight: 600;
+      }
+
+      .markdown-body table td,
+      .markdown-body table th {
+        border: 1px solid #dfe2e5;
+        padding: 6px 13px;
+      }
+
+      .markdown-body table tr {
+        background-color: #fff;
+        border-top: 1px solid #c6cbd1;
+      }
+
+      .markdown-body table tr:nth-child(2n) {
+        background-color: #f6f8fa;
+      }
+
+      .markdown-body img {
+        background-color: #fff;
+        box-sizing: content-box;
+        max-width: 100%;
+      }
+
+      .markdown-body img[align="right"] {
+        padding-left: 20px;
+      }
+
+      .markdown-body img[align="left"] {
+        padding-right: 20px;
+      }
+
+      .markdown-body code {
+        background-color: rgba(27, 31, 35, 0.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: 0.2em 0.4em;
+      }
+
+      .markdown-body pre {
+        word-wrap: normal;
+      }
+
+      .markdown-body pre > code {
+        background: transparent;
+        border: 0;
+        font-size: 100%;
+        margin: 0;
+        padding: 0;
+        white-space: pre;
+        word-break: normal;
+      }
+
+      .markdown-body .highlight {
+        margin-bottom: 16px;
+      }
+
+      .markdown-body .highlight pre {
+        margin-bottom: 0;
+        word-break: normal;
+      }
+
+      .markdown-body .highlight pre,
+      .markdown-body pre {
+        background-color: #f6f8fa;
+        border-radius: 3px;
+        font-size: 85%;
+        line-height: 1.45;
+        overflow: auto;
+        padding: 16px;
+      }
+
+      .markdown-body pre code {
+        background-color: transparent;
+        border: 0;
+        display: inline;
+        line-height: inherit;
+        margin: 0;
+        max-width: auto;
+        overflow: visible;
+        padding: 0;
+        word-wrap: normal;
+      }
+
+      .markdown-body .commit-tease-sha {
+        color: #444d56;
+        display: inline-block;
+        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+          monospace;
+        font-size: 90%;
+      }
+
+      .markdown-body .blob-wrapper {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+
+      .markdown-body .blob-wrapper-embedded {
+        max-height: 240px;
+        overflow-y: auto;
+      }
+
+      .markdown-body .blob-num {
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        color: rgba(27, 31, 35, 0.3);
+        cursor: pointer;
+        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+          monospace;
+        font-size: 12px;
+        line-height: 20px;
+        min-width: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: right;
+        user-select: none;
+        vertical-align: top;
+        white-space: nowrap;
+        width: 1%;
+      }
+
+      .markdown-body .blob-num:hover {
+        color: rgba(27, 31, 35, 0.6);
+      }
+
+      .markdown-body .blob-num:before {
+        content: attr(data-line-number);
+      }
+
+      .markdown-body .blob-code {
+        line-height: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        position: relative;
+        vertical-align: top;
+      }
+
+      .markdown-body .blob-code-inner {
+        color: #24292e;
+        font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+          monospace;
+        font-size: 12px;
+        overflow: visible;
+        white-space: pre;
+        word-wrap: normal;
+      }
+
+      .markdown-body .pl-token.active,
+      .markdown-body .pl-token:hover {
+        background: #ffea7f;
+        cursor: pointer;
+      }
+
+      .markdown-body kbd {
+        background-color: #fafbfc;
+        border: 1px solid #d1d5da;
+        border-bottom-color: #c6cbd1;
+        border-radius: 3px;
+        box-shadow: inset 0 -1px 0 #c6cbd1;
+        color: #444d56;
+        display: inline-block;
+        font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+          monospace;
+        line-height: 10px;
+        padding: 3px 5px;
+        vertical-align: middle;
+      }
+
+      .markdown-body :checked + .radio-label {
+        border-color: #0366d6;
+        position: relative;
+        z-index: 1;
+      }
+
+      .markdown-body .tab-size[data-tab-size="1"] {
+        -moz-tab-size: 1;
+        tab-size: 1;
+      }
+
+      .markdown-body .tab-size[data-tab-size="2"] {
+        -moz-tab-size: 2;
+        tab-size: 2;
+      }
+
+      .markdown-body .tab-size[data-tab-size="3"] {
+        -moz-tab-size: 3;
+        tab-size: 3;
+      }
+
+      .markdown-body .tab-size[data-tab-size="4"] {
+        -moz-tab-size: 4;
+        tab-size: 4;
+      }
+
+      .markdown-body .tab-size[data-tab-size="5"] {
+        -moz-tab-size: 5;
+        tab-size: 5;
+      }
+
+      .markdown-body .tab-size[data-tab-size="6"] {
+        -moz-tab-size: 6;
+        tab-size: 6;
+      }
+
+      .markdown-body .tab-size[data-tab-size="7"] {
+        -moz-tab-size: 7;
+        tab-size: 7;
+      }
+
+      .markdown-body .tab-size[data-tab-size="8"] {
+        -moz-tab-size: 8;
+        tab-size: 8;
+      }
+
+      .markdown-body .tab-size[data-tab-size="9"] {
+        -moz-tab-size: 9;
+        tab-size: 9;
+      }
+
+      .markdown-body .tab-size[data-tab-size="10"] {
+        -moz-tab-size: 10;
+        tab-size: 10;
+      }
+
+      .markdown-body .tab-size[data-tab-size="11"] {
+        -moz-tab-size: 11;
+        tab-size: 11;
+      }
+
+      .markdown-body .tab-size[data-tab-size="12"] {
+        -moz-tab-size: 12;
+        tab-size: 12;
+      }
+
+      .markdown-body .task-list-item {
+        list-style-type: none;
+      }
+
+      .markdown-body .task-list-item + .task-list-item {
+        margin-top: 3px;
+      }
+
+      .markdown-body .task-list-item input {
+        margin: 0 0.2em 0.25em -1.6em;
+        vertical-align: middle;
+      }
+
+      .markdown-body hr {
+        border-bottom-color: #eee;
+      }
+
+      .markdown-body .pl-0 {
+        padding-left: 0 !important;
+      }
+
+      .markdown-body .pl-1 {
+        padding-left: 4px !important;
+      }
+
+      .markdown-body .pl-2 {
+        padding-left: 8px !important;
+      }
+
+      .markdown-body .pl-3 {
+        padding-left: 16px !important;
+      }
+
+      .markdown-body .pl-4 {
+        padding-left: 24px !important;
+      }
+
+      .markdown-body .pl-5 {
+        padding-left: 32px !important;
+      }
+
+      .markdown-body .pl-6 {
+        padding-left: 40px !important;
+      }
+
+      .markdown-body .pl-7 {
+        padding-left: 48px !important;
+      }
+
+      .markdown-body .pl-8 {
+        padding-left: 64px !important;
+      }
+
+      .markdown-body .pl-9 {
+        padding-left: 80px !important;
+      }
+
+      .markdown-body .pl-10 {
+        padding-left: 96px !important;
+      }
+
+      .markdown-body .pl-11 {
+        padding-left: 112px !important;
+      }
+
+      .markdown-body .pl-12 {
+        padding-left: 128px !important;
+      }
+
+      .markdown-body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <article class="markdown-body"><h1>开篇：Vue CLI 3 项目构建基础</h1><p>大家好，当你点进这个标题，开始阅读本章的时候，说明你对 <code>Vue.js</code> 是充满好奇心和求知欲的。我之前写过一篇文章，这样评价 Vue.js，称它是“简单却不失优雅，小巧而不乏大匠”的作品，正如其官网介绍的“易用，灵活和高效”那样。其实框架是 Vue.js 的本质，而真正了解它的人则会把它当成一件作品来欣赏。</p>
+<p>Vue.js 作为一门轻量级、易上手的前端框架，从入门难度和学习曲线上相对其他框架来说算是占据优势的，越来越多的人开始投入 Vue.js 的怀抱，走进 Vue.js 的世界。那么接下来屏幕前的你不妨一起来和我从零开始构建一个 Vue 项目，体会一下 Vue.js 的精彩绝伦。</p>
+<h2>依赖工具</h2>
+<p>在构建一个 Vue 项目前，我们先要确保你本地安装了 <code>Node</code> 环境以及包管理工具 <code>npm</code>，打开终端运行：</p>
+<pre><code># 查看 node 版本
+node -v
+
+# 查看 npm 版本
+npm -v
+
+</code></pre>
+<p>如果成功打印出版本号，说明你本地具备了 node 的运行环境，我们可以使用 npm 来安装管理项目的依赖，而如果没有或报错，则你需要去 <a href="https://nodejs.org/en/">node 官网</a>进行 node 的下载及安装，如图：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/10/31/166c5eb2c6f04593?w=575&amp;h=197&amp;f=png&amp;s=29269" alt="" /></p>
+<p>左边的版本是推荐安装的稳定版本，也就是目前已经被正式列入标准的版本，而右边的版本是当前最新的版本，该版本包含了一些新的特性，还未被完全列入标准，可能以后会有所变动。这里建议大家安装最新的 node 稳定版进行开发。</p>
+<h2>脚手架</h2>
+<p>当我们安装完 node 后便可以开始进行后续的构建工作了，那么这里我主要给大家介绍下最便捷的脚手架构建。</p>
+<h3>1. 什么是脚手架</h3>
+<p>很多人可能经常会听到“脚手架”三个字，无论是前端还是后台，其实它在生活中的含义是为了保证各施工过程顺利进行而搭设的工作平台。因此作为一个工作平台，前端的脚手架可以理解为能够帮助我们快速构建前端项目的一个工具或平台。</p>
+<h3>2. vue-cli</h3>
+<p>其实说到脚手架，目前很多主流的前端框架都提供了各自官方的脚手架工具，以帮助开发者快速构建起自己的项目，比如 <code>Vue</code>、<code>React</code> 等，这里我们就来介绍下 Vue 的脚手架工具 <code>vue-cli</code>。</p>
+<p>vue-cli 经历了几个版本的迭代，目前最新的版本是 3.x，也是本小册构建项目所使用的版本，我们一起来看下其人性化的构建流程：</p>
+<h4>a. 安装</h4>
+<p>我们可以在终端通过以下命令全局安装 vue-cli：</p>
+<pre><code># 安装 Vue CLI 3.x
+npm i -g @vue/cli
+
+</code></pre>
+<p>如果你习惯使用 <code>yarn</code>，你也可以：</p>
+<pre><code># 没有全局安装yarn需执行此命令
+npm i -g yarn
+yarn global add @vue/cli
+
+</code></pre>
+<p>注意因为是全局安装，所以 vue-cli 是全局的包，它和我们所处的项目没有关系。同时我们这里介绍的 CLI 版本是最新的 3.x，它和 2.x 版本存在着很大的区别，具体的讲解会在后续章节中进行介绍。</p>
+<h4>b. 构建</h4>
+<p>安装完 vue-cli 后，我们在你想要创建的项目目录地址下执行构建命令：</p>
+<pre><code># my-project 是你的项目名称
+vue create my-project
+
+</code></pre>
+<p>执行完上述命令后，会出现一系列的选择项，我们可以根据自己的需要进行选择，流程图如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/18/16412343fab2e351?w=980&amp;h=634&amp;f=png&amp;s=57073" alt="" /></p>
+<p>如果你只想构建一个基础的 Vue 项目，那么使用 <code>Babel</code>、<code>Router</code>、<code>Vuex</code>、<code>CSS Pre-processors</code> 就足够了，最后选择你喜欢的包管理工具 npm or yarn。</p>
+<h4>c. 启动</h4>
+<p>等待构建完成后你便可以运行命令来启动你的 Vue 项目：</p>
+<pre><code># 打开项目目录
+cd vue-project
+
+# 启动项目
+yarn serve
+
+# or
+npm run serve
+
+</code></pre>
+<p>需要注意的是如果启动的时候出现报错或者包丢失等情况，最好将 node 或者 yarn （如果使用）的版本更新到最新重新构建。</p>
+<p>成功后打开浏览器地址：<a href="http://localhost:8080/">http://localhost:8080/</a> 可以看到如下界面：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/18/164125dcfb6fa7d5" alt="" /></p>
+<h4>d. 目录结构</h4>
+<p>最后脚手架生成的目录结构如下：</p>
+<pre><code>├── node_modules     # 项目依赖包目录
+├── public
+│   ├── favicon.ico  # ico图标
+│   └── index.html   # 首页模板
+├── src 
+│   ├── assets       # 样式图片目录
+│   ├── components   # 组件目录
+│   ├── views        # 页面目录
+│   ├── App.vue      # 父组件
+│   ├── main.js      # 入口文件
+│   ├── router.js    # 路由配置文件
+│   └── store.js     # vuex状态管理文件
+├── .gitignore       # git忽略文件
+├── .postcssrc.js    # postcss配置文件
+├── babel.config.js  # babel配置文件
+├── package.json     # 包管理文件
+└── yarn.lock        # yarn依赖信息文件
+
+</code></pre>
+<p>根据你安装时选择的依赖不同，最后生成的目录结构也会有所差异。</p>
+<h3>3. 可视化界面</h3>
+<p>当然，除了使用上述命令行构建外，<code>vue-cli 3.x</code> 还提供了可视化的操作界面，在项目目录下我们运行如下命令开启图形化界面：</p>
+<pre><code>vue ui
+
+</code></pre>
+<p>之后浏览器会自动打开本地 <code>8000</code> 端口，页面如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/26/1643ca037f818a81?w=805&amp;h=396&amp;f=png&amp;s=18543" alt="" /></p>
+<p>如果你还没有任何项目，那么可以点击创建或者直接导入现有的项目。创建项目和我们使用命令行的步骤基本相同，完全可视化操作，一定程度上降低了构建和使用的难度。项目创建或导入成功后你便可以进入项目进行可视化管理了。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/6/26/1643ca8799bb4491?w=819&amp;h=397&amp;f=png&amp;s=71058" alt="" /></p>
+<p>在整个管理界面中，我们可以为自己的项目安装 CLI 提供的插件，比如安装 <code>@vue/cli-plugin-babel</code> 插件，同时我们也可以配置相应插件的配置项，进行代码的编译、热更新、检查等。详细的操作大家可以自己进行手动尝试，相信你会发现意想不到的惊喜。</p>
+<h2>你还需要了解什么</h2>
+<p>上方我们用 vue-cli 成功生成了一个最基础的 Vue 项目，麻雀虽小，五脏俱全，但是想要让麻雀飞起来，我们还要不断的给它进行拓展训练，那么我们还需要了解什么呢？</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/9/20/165f2c3a9c4f640c?w=665&amp;h=251&amp;f=png&amp;s=21583" alt="" /></p>
+<p>以上这些内容（包含但不限于）将会在本小册的接下来几章进行详细的讲解，你准备好了吗？</p>
+<h2>结语</h2>
+<p>本文主要讲述了使用 vue-cli 脚手架进行 Vue 项目构建的基本知识，从构建的流程中我们不难发现 Vue 提供给了我们一套非常灵活可配置的工具，其小巧而不乏大匠的魅力不言而喻。希望大家能够从构建开始，逐渐领略 Vue.js 的匠心，激发自己的对 Vue 的兴趣。</p>
+</article>
+  </body>
+</html>
